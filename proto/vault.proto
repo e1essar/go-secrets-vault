@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package vault;
-option go_package = "go-secrets-vault/proto/vault;vaultpb";
+option go_package = "internal/vaultpb;vaultpb";
 
 message Secret {
   string id = 1;
