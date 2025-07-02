@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package vault;
+option go_package = "go-secrets-vault/proto/vault;vaultpb";
+
+message Secret {
+  string id = 1;
+  bytes nonce = 2;
+  bytes ciphertext = 3;
+}
+
+message SecretID { string id = 1; }
+
+service Vault {
+  rpc Store(Secret) returns (SecretID);
+  rpc Retrieve(SecretID) returns (Secret);
+  rpc Rotate(SecretID) returns (Secret);
+}
